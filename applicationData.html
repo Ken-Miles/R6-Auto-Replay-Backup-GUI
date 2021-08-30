@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Rainbow Six Siege - Match Replay Backup</title>
+    </head>
+    <body>
+        
+        <label>Script Started at <a class="time">N/A</a></label><br>
+        <label>Script has run <a class='loops'>0</a> times</label><br>
+        <label>Script has been running for <a class="runTime">0</a> Seconds</label><br>
+        <label>Script has successfully moved <a class="files">0</a> Replays</label>
+
+        <script>
+            const electron = require('electron');
+            const { ipcRenderer } = electron;
+            const time = getElement('time');
+            const loops = getElement('loops');
+            const runTime = getElement('runTime');
+            const files = getElement('files');
+
+            ipcRenderer.on('load:appdata', (e, obj) => {
+                time.value = obj.time;
+                loops.value = obj.loops;
+                runTime.value = obj.runTime;
+                files.value = obj.files;
+            });
+            
+            function getElement(ElmClass) {
+                const x = document.querySelector('#' + ElmClass);
+                return x;
+            };
+
+        </script>
+
+    </body>
+</html>

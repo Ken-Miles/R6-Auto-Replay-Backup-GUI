@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Rainbow Six Siege; Auto Match Replay Mover</title>
+</head>
+
+<body>
+    <button class="option" id='config'>Configuration Options</button><br><br>
+    <button class='option' id='appdata'>View Application Data</button><br><br>
+    <button class="option" id='credits'>Extras/Credits</button><br><br><br>
+    <button class="onoff" id="off">Turn on the script</button>
+
+    <script>
+        const electron = require('electron');
+        const { ipcRenderer } = electron;
+        const onoff = document.querySelector('.onoff');
+        const configBtn = document.querySelector('#config');
+        const appdata = document.querySelector('#appdata');
+        const credits = document.querySelector('#credits');
+        const fs = require('fs');
+
+        let hConfig = {};
+
+        const timems = (config.time * 1000)
+
+        configBtn.addEventListener('click', () => {
+            ipcRenderer.send('openWindow:config');
+        })
+
+        appdata.addEventListener('click', () => {
+            ipcRenderer.send('openWindow:appdata');
+        });
+
+        credits.addEventListener('click', () => {
+            ipcRenderer.send('openWindow:credits');
+        });
+
+        onoff.addEventListener('click', () => {
+            if (!hConfig.mainFolder) return alert('You need to set the config Values')
+            if (onoff.id === 'off') {
+                onoff.id = 'on';
+                onoff.textContent = 'Turn off the script';
+                ipcRenderer.send('script:toggle', onoff.id);
+            } else {
+                onoff.id = 'off';
+                onoff.textContent = 'Turn on the script';
+                ipcRenderer.send('script:toggle', onoff.id);
+            };
+        });
+
+        ipcRenderer.on('save:config', (e, config) => {
+            hConfig = config;
+        });
+
+    </script>
+</body>
+
+</html>

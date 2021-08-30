@@ -1,0 +1,129 @@
+@font-face { font-family: quicksand; src: url('./assets/fonts/Quicksand-Medium.ttf'); }
+
+body {
+    background-color: rgba(54, 57, 63, 255);
+    color:white;
+    font-size: 17px;
+    font-family: quicksand;
+}
+
+.submit {
+    background-color: rgba(59, 165, 93, 255);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    font-family: quicksand;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+}
+
+.submit:hover {
+    background-color: rgba(89, 195, 123, 255);
+    color:white;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.submit:disabled {
+    cursor: not-allowed;
+    background-color: rgba(29, 135, 63, 255);
+}
+
+.option {
+    background-color: rgba(125, 125, 125, 255);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    font-family: quicksand;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+}
+
+.option:hover {
+    background-color: rgba(155, 155, 155, 255);
+    color:white;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#off {
+    background-color: rgba(59, 165, 93, 255);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    font-family: quicksand;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+}
+
+#off:hover {
+    background-color: rgba(89, 195, 123, 255);
+    color:white;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#on {
+    background-color: rgba(195, 59, 93, 255);
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    font-family: quicksand;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    border-radius: 4px;
+}
+
+#on:hover {
+    background-color: rgba(225, 89, 123, 255);
+    color:white;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+input[type=text] {
+    width: 675px;
+    border-width: 0px;
+    padding: 8px 15px;
+    font-family: quicksand;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: rgba(225, 225, 225, 255);
+}
+
+input[type=text]:focus {
+    border-width:0px;
+    background-color: rgba(245, 245, 245, 255);
+    outline: 0px;
+}
+
+input[type=number] {
+    width: 668px;
+    border-width: 0px;
+    padding: 8px 15px;
+    font-family: quicksand;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: rgba(225, 225, 225, 255);
+}
+
+input[type=number]:focus {
+    border-width:0px;
+    background-color: rgba(245, 245, 245, 255);
+    outline: 0px;
+}
+
+#link {
+    color:aquamarine;
+}

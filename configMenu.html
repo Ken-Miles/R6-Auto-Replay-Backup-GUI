@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Rainbow Six Siege - Match Replay Backup</title>
+    </head>
+    <body>
+        <form>
+            <a id='main-text'>Enter the location of your Main R6 Match Replay Folder</a><br>
+            <a id='main-text'>Ex. M:/Games/steamapps/common/Tom Clancy's Rainbow Six Siege/MatchReplay</a><br>
+            <input id="mainFile" class='input' type="text">
+            <br><br>
+
+            <a id='main-text'>Enter the location of where you want to move the Replays</a><br>
+            <a id='main-text'>Ex. M:/R6MatchReplays/BaseGame</a>
+            <br>
+            <input id="storageFile" class='input' type="text">
+            <br>
+            <br>
+            <a id="main-text">How often (in seconds) do you want the script to loop?</a>
+            <br>
+            <input type="number" id="time" class="input">
+            <br>
+            <br>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+
+        <script>
+            const electron = require('electron');
+            const { ipcRenderer } = electron;
+
+            const form = document.querySelector('form');
+            form.addEventListener('submit', submitForm);
+
+            function submitForm(e) {
+                
+                e.preventDefault();
+                const mainFolder = document.querySelector('#mainFile').value;
+                const storageFolder = document.querySelector('#storageFile').value;
+                const time = document.querySelector('#time').value;
+                const button = document.querySelector('.submit');
+
+                if (!mainFolder) return alert('You need to specify where your Main R6 folder is located!');
+                if (!storageFolder) return alert('You need to specify where you would like to save your replays!');
+                if (!time) return alert ('You must specify how often you would like the script to loop (number must be greater than 1)');
+                button.setAttribute('disabled', true);
+                const config = {
+                    'mainFolder': mainFolder,
+                    'storageFolder': storageFolder,
+                    'time': time
+                }
+                ipcRenderer.send('save:config', config);
+            };
+
+            ipcRenderer.on('load:config', (e, storage) => {
+                const mainFolder = document.querySelector('#mainFile');
+                const storageFolder = document.querySelector('#storageFile');
+                const time = document.querySelector('#time');
+                const config = storage.config
+
+                mainFolder.value = config.mainFolder;
+                storageFolder.value = config.storageFolder;
+                time.value = config.time;
+            });
+        </script>
+
+    </body>
+</html>
