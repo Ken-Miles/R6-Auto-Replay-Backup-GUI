@@ -9,9 +9,6 @@ https://www.electronjs.org/
 ### You will not get banned for this
 This application doesn't attach to the Rainbow Six Process, so you don't need to worry about getting a hit from BattlEye.
  
- If you want the built version of this application, you can download it here:
- https://www.dropbox.com/s/w6lkfm2x3qhrzvp/R6%20Match%20Replay%20Backup.rar?dl=0
- 
  
  Don't feel obligated to download this, I coded this because I kept forgeting to backup my Replays.
  
