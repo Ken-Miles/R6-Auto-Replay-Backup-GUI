@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const electron = require('electron')
+const { dialog } = require('electron');
 const url = require('url');
 const path = require('path');
 const { config } = require('process');
@@ -104,6 +105,15 @@ ipcMain.on('openWindow:config', e => {
             configWindow = null;
         });
     }
+});
+
+// Open a dialog to select a folder
+ipcMain.handle('dialog:openDirectory', async () => {
+    const result = await dialog.showOpenDialog({
+        properties: ['openDirectory']
+    });
+    if (result.canceled) return null;
+    return result.filePaths[0];
 });
 
 ipcMain.on('openWindow:appdata', e => {

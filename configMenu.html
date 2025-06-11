@@ -8,15 +8,21 @@
         <form>
             <a id='main-text'>Enter the location of your Main R6 Match Replay Folder</a><br>
             <a id='main-text'>Ex. M:/Games/steamapps/common/Tom Clancy's Rainbow Six Siege/MatchReplay</a><br>
-            <input id="mainFile" class='input' type="text">
+            <div class="input-group">
+                <input id="mainFile" class="input" type="text">
+                <button type="button" class="folder-btn" data-target="mainFile">📁</button>
+            </div>
             <br><br>
 
             <a id='main-text'>Enter the location of where you want to move the Replays</a><br>
             <a id='main-text'>Ex. M:/R6MatchReplays/BaseGame</a>
             <br>
-            <input id="storageFile" class='input' type="text">
-            <br>
-            <br>
+            <div class="input-group">
+                <input id="storageFile" class='input' type="text">
+                <button type="button" class="folder-btn" data-target="storageFile">📁</button>
+            </div>
+            <br><br>
+
             <a id="main-text">How often (in seconds) do you want the script to loop?</a>
             <br>
             <input type="number" id="time" class="input">
@@ -28,6 +34,16 @@
         <script>
             const electron = require('electron');
             const { ipcRenderer } = electron;
+
+            document.querySelectorAll('.folder-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const targetInputId = btn.getAttribute('data-target');
+                    const folderPath = await ipcRenderer.invoke('dialog:openDirectory');
+                    if (folderPath) {
+                        document.getElementById(targetInputId).value = folderPath;
+                    }
+                });
+            });
 
             const form = document.querySelector('form');
             form.addEventListener('submit', submitForm);

@@ -127,3 +127,18 @@ input[type=number]:focus {
 #link {
     color:aquamarine;
 }
+
+.input-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.folder-btn {
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
